@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Distinguished Faculty | Graphic Era (Deemed to be University){% endblock %}
+{% block body %}
+
+<div class="phead">
+  <h1>Distinguished Faculty & Academic Leadership</h1>
+  <p>Learn from eminent academicians, researchers and industry experts from IITs, NITs and top global institutions</p>
+</div>
+
+<div class="wrap">
+  <section style="padding: 2.5rem 0;">
+    <div style="text-align:center;max-width:700px;margin:0 auto 2.5rem;">
+      <h2 style="margin-top:0;">Mentors Shaping Tomorrow's Leaders</h2>
+      <p style="color:var(--text-muted);font-size:1.02rem;">
+        Over 80% of our faculty hold doctoral degrees, with active contributions in high-impact international journals, sponsored research projects, and global patents.
+      </p>
+    </div>
+
+    <div class="grid">
+      {% for f in faculty %}
+        <div class="card highlight" style="display:flex;flex-direction:column;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">👨‍🏫</div>
+          <h3 style="margin:0 0 0.3rem;color:var(--navy);font-size:1.15rem;">{{ f.name }}</h3>
+          <div style="font-weight:600;color:var(--primary);font-size:0.92rem;margin-bottom:0.3rem;">{{ f.designation }}</div>
+          <div style="font-size:0.88rem;color:var(--navy);margin-bottom:0.5rem;"><b>School:</b> {{ f.dept }}</div>
+          <div style="margin-top:auto;padding-top:0.6rem;border-top:1px solid var(--border-color);font-size:0.84rem;color:var(--text-muted);">
+            🎓 {{ f.qualification }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+{% endblock %}

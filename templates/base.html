@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Graphic Era (Deemed to be University) | Dehradun{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <!-- Top Utility Bar -->
+  <div class="topbar">
+    <div>
+      <span class="topbar-badge">NAAC Grade 'A+'</span>
+      <span style="margin-left:8px">🏛️ Ranked Among Top 55 Universities in India (NIRF)</span>
+      <span style="margin-left:14px;color:var(--gold)">|</span>
+      <span style="margin-left:14px">📍 Clement Town, Dehradun, Uttarakhand</span>
+    </div>
+    <div>
+      <span>📞 Helpline: <b>1800 890 6027</b> / +91-135-2643421</span>
+      <span style="margin-left:14px;color:var(--gold)">|</span>
+      <a href="https://geu.ac.in" target="_blank" style="margin-left:14px">Official Portal ↗</a>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <nav>
+    <a class="nav-brand" href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='geu_logo.jpg') }}" alt="Graphic Era (Deemed to be University)" style="height:58px;width:auto;object-fit:contain;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.3);">
+    </a>
+    {% for ep, l in [('index','Home'), ('about','About'), ('academics','Academics'), ('admissions','Admissions'), ('faculty_members','Faculty'), ('events','Events'), ('notices','Notices'), ('contact_page','Contact')] %}
+      <a href="{{ url_for(ep) }}" class="{{ 'active' if request.endpoint == ep or (ep == 'contact_page' and request.endpoint == 'contact') }}">{{ l }}</a>
+    {% endfor %}
+
+    {% if session.role %}
+      <a class="btn sm" href="{{ url_for(session.role) }}">📊 {{ session.role|capitalize }} Portal</a>
+      <a class="btn gold sm" href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+      <a class="btn gold sm" href="{{ url_for('login') }}">ERP Login</a>
+    {% endif %}
+  </nav>
+
+  <!-- Flash Messages -->
+  {% with m = get_flashed_messages(with_categories=true) %}
+    {% for c, t in m %}
+      <div class="toast {{ c }}">
+        {% if c == 'success' %}✓{% else %}⚠{% endif %} {{ t }}
+      </div>
+    {% endfor %}
+  {% endwith %}
+
+  <!-- Page Content -->
+  {% block body %}{% endblock %}
+
+  <!-- University Footer -->
+  <footer>
+    <div class="footer-grid wrap" style="padding:0;margin-bottom:2.5rem;">
+      <div class="footer-col">
+        <h4 style="color:#FFF">Graphic Era University</h4>
+        <p>Conferred Deemed-to-be-University status under Section 3 of the UGC Act, 1956. Accredited by NAAC with Grade 'A+', NIRF Ranked among the top institutions in India.</p>
+        <p style="color:var(--gold);font-weight:600">Transforming Dreams into Reality</p>
+      </div>
+      <div class="footer-col">
+        <h4>Academics</h4>
+        <a href="{{ url_for('academics') }}">Schools & Departments</a>
+        <a href="{{ url_for('admissions') }}">Admissions 2026-27</a>
+        <a href="{{ url_for('faculty_members') }}">Distinguished Faculty</a>
+        <a href="{{ url_for('events') }}">Campus Events & Grafest</a>
+      </div>
+      <div class="footer-col">
+        <h4>Portals & Quick Links</h4>
+        <a href="{{ url_for('login') }}">Student & Faculty ERP</a>
+        <a href="{{ url_for('notices') }}">Notice Board & Circulars</a>
+        <a href="{{ url_for('about') }}">About Graphic Era</a>
+        <a href="{{ url_for('contact_page') }}">Contact Admissions Office</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Campus</h4>
+        <p>📍 566/6, Bell Road, Society Area, Clement Town, Dehradun, Uttarakhand - 248002</p>
+        <p>📞 1800 890 6027 / +91-135-2643421</p>
+        <p>✉️ <a href="mailto:admissions@geu.ac.in" style="display:inline;color:var(--gold)">admissions@geu.ac.in</a></p>
+        <p>🌐 <a href="https://geu.ac.in" target="_blank" style="display:inline;color:var(--gold)">www.geu.ac.in</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom wrap" style="padding:1.5rem 0 0;">
+      © Graphic Era (Deemed to be University), Dehradun, Uttarakhand · All Rights Reserved · Official Portal: <a href="https://geu.ac.in" target="_blank" style="color:var(--gold)">geu.ac.in</a>
+    </div>
+  </footer>
+</body>
+</html>

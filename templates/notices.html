@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Notice Board & Circulars | Graphic Era (Deemed to be University){% endblock %}
+{% block body %}
+
+<div class="phead">
+  <h1>Official Notice Board & Circulars</h1>
+  <p>Authentic notifications, academic schedules, examination timetables, and campus alerts</p>
+</div>
+
+<div class="wrap" style="max-width:960px;margin:2.5rem auto;">
+  <section style="padding:0;background:transparent;">
+    {% for n in notices %}
+      <div class="card highlight" style="margin-bottom:1.2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;">
+          <b style="font-size:1.12rem;color:var(--navy);">📢 {{ n.title }}</b>
+          <span class="badge gold">{{ n.created_at }}</span>
+        </div>
+        <p style="margin:0.7rem 0 0;font-size:0.95rem;color:var(--text-main);line-height:1.7;">
+          {{ n.body }}
+        </p>
+        <div style="margin-top:0.8rem;padding-top:0.6rem;border-top:1px solid var(--border-color);display:flex;justify-content:space-between;align-items:center;">
+          <small style="color:var(--text-muted);">Issued by: Office of the Registrar, Graphic Era University</small>
+          <span style="font-size:0.8rem;color:var(--primary);font-weight:600;">Verified Notice ✓</span>
+        </div>
+      </div>
+    {% else %}
+      <p style="text-align:center;color:var(--text-muted);padding:3rem 0;">No active circulars at the moment.</p>
+    {% endfor %}
+  </section>
+</div>
+
+{% endblock %}

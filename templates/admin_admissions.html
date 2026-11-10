@@ -1,0 +1,73 @@
+{% extends "admin_base.html" %}
+{% block main %}
+<div style="margin-bottom:1.5rem;">
+  <h2 style="margin:0;">Admissions & Inquiries</h2>
+  <p style="color:var(--text-muted);margin:0.2rem 0 0;">Review candidate applications, approval workflow, and contact queries</p>
+</div>
+
+<div style="overflow-x:auto;margin-bottom:2.5rem;">
+  <table>
+    <thead>
+      <tr>
+        <th>Applicant Name</th>
+        <th>Contact Details</th>
+        <th>Department</th>
+        <th>Course Applied</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in admissions %}
+        <tr>
+          <td>
+            <b>{{ a.name }}</b><br>
+            <small style="color:var(--text-muted);">DOB: {{ a.dob }} ({{ a.gender }})</small>
+          </td>
+          <td>
+            {{ a.email }}<br>
+            <small>{{ a.phone }}</small>
+          </td>
+          <td>{{ a.dept }}</td>
+          <td><b>{{ a.course }}</b><br><small>{{ a.qualification }}</small></td>
+          <td>
+            <span class="badge {{ 'primary' if a.status=='Pending' else 'gold' if a.status=='Approved' else '' }}" style="font-weight:700;">
+              {{ a.status }}
+            </span>
+          </td>
+          <td>
+            {% for act in ('Approved','Rejected') %}
+              <form style="display:inline" method="post" action="{{ url_for('decide', aid=a.id, act=act) }}">
+                {{ csrf() }}
+                <button class="btn sm {{ 'red' if act=='Rejected' else 'gold' }}">{{ act }}</button>
+              </form>
+            {% endfor %}
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="6" style="text-align:center;color:var(--text-muted);">No admission applications received yet.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h3 style="color:var(--navy);margin-top:2rem;">Received Contact Messages</h3>
+<div style="max-width:900px;">
+  {% for m in msgs %}
+    <div class="card highlight" style="margin-bottom:1rem;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.4rem;">
+        <div>
+          <b style="color:var(--navy);">{{ m.name }}</b>
+          <span style="color:var(--text-muted);font-size:0.9rem;">({{ m.email }})</span>
+        </div>
+        <span class="badge">{{ m.created_at }}</span>
+      </div>
+      <p style="margin:0.6rem 0 0;font-size:0.92rem;line-height:1.6;color:var(--text-main);">{{ m.message }}</p>
+    </div>
+  {% else %}
+    <p style="color:var(--text-muted);">No contact messages at the moment.</p>
+  {% endfor %}
+</div>
+{% endblock %}

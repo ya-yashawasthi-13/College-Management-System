@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% block title %}Graphic Era (Deemed to be University) | Official Portal{% endblock %}
+{% block body %}
+
+<!-- Hero Banner -->
+<div class="hero">
+  <div class="hero-pill">
+    ⭐ NAAC Grade 'A+' · NIRF Top Ranked University in India · Dehradun
+  </div>
+  <h1>Graphic Era (Deemed to be University)</h1>
+  <div class="hero-sub">🔥 Transforming Dreams into Reality</div>
+  <p class="lead">
+    Welcome to Graphic Era University, Dehradun — a premier institution fostering world-class education, breakthrough research, innovation, and global placements in Engineering, Technology, Management, and Life Sciences.
+  </p>
+  <div class="hero-actions">
+    <a class="btn gold" href="{{ url_for('admissions') }}">Apply for Admission 2026-27</a>
+    <a class="btn outline-white" href="{{ url_for('academics') }}">Explore Programs</a>
+    <a class="btn outline-white" href="{{ url_for('about') }}">Campus Tour & About Us</a>
+  </div>
+  <a class="hero-scroll" href="#why-geu">▼</a>
+</div>
+
+<!-- Why Graphic Era -->
+<section id="why-geu">
+  <div class="section-head">
+    <h2>Why Graphic Era University?</h2>
+    <p>Discover what makes Graphic Era one of India's most preferred higher education destinations.</p>
+  </div>
+  <div class="grid">
+    <div class="card highlight">
+      <h3 style="margin-top:0;color:var(--primary);">🏆 NAAC 'A+' Accreditation</h3>
+      <p>Accredited with an exceptional institutional score by NAAC for academic rigour, research output, faculty quality, and infrastructure.</p>
+    </div>
+    <div class="card highlight">
+      <h3 style="margin-top:0;color:var(--primary);">💼 Stellar Placement Records</h3>
+      <p>Highest package of ₹84.88 LPA with premier recruiters like Google, Microsoft, Adobe, Amazon, Morgan Stanley, TCS, and Infosys.</p>
+    </div>
+    <div class="card highlight">
+      <h3 style="margin-top:0;color:var(--primary);">🔬 Cutting-Edge Research & Labs</h3>
+      <p>High-performance computing centres, Apple Authorized Training Centre, NVIDIA AI Workstations, Robotics and IoT innovation hubs.</p>
+    </div>
+    <div class="card highlight">
+      <h3 style="margin-top:0;color:var(--primary);">🎉 Grafest: Mega Cultural Fest</h3>
+      <p>Home to Grafest, Northern India's biggest annual techno-cultural carnival featuring live celebrity concerts, star nights, and national hackathons.</p>
+    </div>
+    <div class="card highlight">
+      <h3 style="margin-top:0;color:var(--primary);">🏔️ Picturesque Dehradun Campus</h3>
+      <p>Situated in Clement Town, Dehradun against the serene backdrop of Shivalik hills and Rajaji National Park, providing an ideal learning ambiance.</p>
+    </div>
+    <div class="card highlight">
+      <h3 style="margin-top:0;color:var(--primary);">🎓 Scholarships & Financial Aid</h3>
+      <p>Merit scholarships up to 30%, dedicated fee concessions for female scholars, and special domicile support for Uttarakhand residents.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Popular Academic Programs -->
+<section style="background:#FFFFFF;">
+  <div class="section-head">
+    <h2>Explore Popular Programs</h2>
+    <p>Industry-aligned curriculum accredited by NAAC with Grade 'A+', designed for tomorrow's leaders.</p>
+  </div>
+  <div class="grid">
+    <div class="card highlight" style="display:flex;flex-direction:column;">
+      <span class="badge gold" style="width:fit-content;">School of Computing</span>
+      <h3 style="margin:0.6rem 0 0.4rem;color:var(--navy);font-size:1.18rem;">B.Tech Computer Science & Engg</h3>
+      <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.6;margin:0 0 1.2rem;">
+        Specializations in Artificial Intelligence, Machine Learning, Data Science, and Cloud Architecture.
+      </p>
+      <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:0.8rem;border-top:1px solid var(--border-color);">
+        <small style="color:var(--text-muted);font-weight:600;">⏱ 4 Years · Full Time</small>
+        <a class="btn sm" href="{{ url_for('admissions') }}">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="card highlight" style="display:flex;flex-direction:column;">
+      <span class="badge primary" style="width:fit-content;">Computer Applications</span>
+      <h3 style="margin:0.6rem 0 0.4rem;color:var(--navy);font-size:1.18rem;">BCA & MCA Programs</h3>
+      <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.6;margin:0 0 1.2rem;">
+        Full-stack software engineering, web technologies, database management, and mobile application development.
+      </p>
+      <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:0.8rem;border-top:1px solid var(--border-color);">
+        <small style="color:var(--text-muted);font-weight:600;">⏱ 3 / 2 Years</small>
+        <a class="btn sm" href="{{ url_for('admissions') }}">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="card highlight" style="display:flex;flex-direction:column;">
+      <span class="badge gold" style="width:fit-content;">School of Management</span>
+      <h3 style="margin:0.6rem 0 0.4rem;color:var(--navy);font-size:1.18rem;">MBA & BBA Programs</h3>
+      <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.6;margin:0 0 1.2rem;">
+        Dual specializations in Marketing, Finance, HR, International Business, and Business Analytics.
+      </p>
+      <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:0.8rem;border-top:1px solid var(--border-color);">
+        <small style="color:var(--text-muted);font-weight:600;">⏱ 2 / 3 Years</small>
+        <a class="btn sm" href="{{ url_for('admissions') }}">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="card highlight" style="display:flex;flex-direction:column;">
+      <span class="badge primary" style="width:fit-content;">Life Sciences</span>
+      <h3 style="margin:0.6rem 0 0.4rem;color:var(--navy);font-size:1.18rem;">B.Sc (Hons) Biotechnology</h3>
+      <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.6;margin:0 0 1.2rem;">
+        Genomics, microbiology, bioinformatics, plant tissue culture, and pharmaceutical biotechnology research.
+      </p>
+      <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:0.8rem;border-top:1px solid var(--border-color);">
+        <small style="color:var(--text-muted);font-weight:600;">⏱ 3 Years · Full Time</small>
+        <a class="btn sm" href="{{ url_for('admissions') }}">Apply Now</a>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2rem;">
+    <a class="btn outline-white" href="{{ url_for('academics') }}" style="background:var(--navy);border-color:var(--navy);">View All Schools & Programs</a>
+  </div>
+</section>
+
+<!-- Placement Milestones & Recruiters -->
+<section style="background:linear-gradient(135deg, #0B162C, #1A050B);color:#FFFFFF;">
+  <div class="section-head">
+    <h2 style="color:#FFFFFF;">Placement Records & Top Recruiters</h2>
+    <p style="color:#CBD5E1;">Every year, over 300+ marquee tech conglomerates and consulting giants hire from Graphic Era.</p>
+  </div>
+  <div class="grid" style="margin-bottom:2.5rem;">
+    <div class="card" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#FFF;text-align:center;">
+      <div class="num" style="color:var(--gold);">₹84.88 LPA</div>
+      <b style="color:#FFF;">Highest Package</b>
+      <div style="font-size:0.85rem;color:#CBD5E1;margin-top:4px;">Global Tech Giants</div>
+    </div>
+    <div class="card" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#FFF;text-align:center;">
+      <div class="num" style="color:#60A5FA;">300+</div>
+      <b style="color:#FFF;">Recruiting Companies</b>
+      <div style="font-size:0.85rem;color:#CBD5E1;margin-top:4px;">Fortune 500 & MNCs</div>
+    </div>
+    <div class="card" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#FFF;text-align:center;">
+      <div class="num" style="color:#34D399;">30,000+</div>
+      <b style="color:#FFF;">Global Alumni</b>
+      <div style="font-size:0.85rem;color:#CBD5E1;margin-top:4px;">Leading across 40+ countries</div>
+    </div>
+    <div class="card" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:#FFF;text-align:center;">
+      <div class="num" style="color:var(--gold);">100%</div>
+      <b style="color:#FFF;">Placement Assistance</b>
+      <div style="font-size:0.85rem;color:#CBD5E1;margin-top:4px;">Dedicated Career Cell</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;max-width:960px;margin:0 auto;">
+    {% for brand in ['Google', 'Microsoft', 'Amazon', 'Adobe', 'Morgan Stanley', 'Salesforce', 'TCS', 'Infosys', 'Wipro', 'Cognizant', 'Zscaler', 'Accenture'] %}
+      <div style="background:rgba(255,255,255,0.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.2);padding:0.75rem 1.6rem;border-radius:30px;font-weight:600;font-size:0.95rem;color:#FFFFFF;letter-spacing:0.5px;">
+        ✦ {{ brand }}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Upcoming Campus Events -->
+<section>
+  <div class="section-head">
+    <h2>Upcoming Events & Campus Life</h2>
+    <p>Conferences, cultural fests, hackathons, and corporate conclaves at GEU.</p>
+  </div>
+  <div class="grid">
+    {% for e in events %}
+      <div class="card ev highlight">
+        <div class="date">
+          <span style="font-size:1.4rem;">{{ e.event_date[8:] }}</span><br>
+          <small>{{ e.event_date[:7] }}</small>
+        </div>
+        <div>
+          <b style="font-size:1.05rem;color:var(--navy);">{{ e.title }}</b>
+          <p style="margin:0.4rem 0 0.5rem;font-size:0.9rem;color:var(--text-muted);">{{ e.description }}</p>
+          <small style="color:var(--primary);font-weight:600;">📍 {{ e.venue }}</small>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div style="text-align:center;margin-top:2rem;">
+    <a class="btn" href="{{ url_for('events') }}">View All Campus Events</a>
+  </div>
+</section>
+
+<!-- Latest Notices Board -->
+<section style="background:#FFFFFF;">
+  <div class="section-head">
+    <h2>Notice Board & Circulars</h2>
+    <p>Official announcements, exam schedules, and academic updates from the Registrar Office.</p>
+  </div>
+  <div style="max-width:900px;margin:0 auto;">
+    {% for n in notices %}
+      <div class="card highlight" style="margin-bottom:1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;">
+          <b style="font-size:1.08rem;color:var(--navy);">📢 {{ n.title }}</b>
+          <span class="badge gold">{{ n.created_at }}</span>
+        </div>
+        <p style="margin:0.5rem 0 0;font-size:0.93rem;color:var(--text-muted);line-height:1.6;">{{ n.body }}</p>
+      </div>
+    {% endfor %}
+    <div style="text-align:center;margin-top:1.8rem;">
+      <a class="btn" href="{{ url_for('notices') }}">View All Notices</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

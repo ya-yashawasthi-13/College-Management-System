@@ -1,0 +1,64 @@
+{% extends "admin_base.html" %}
+{% block main %}
+<div style="margin-bottom:1.5rem;">
+  <h2 style="margin:0;">Graphic Era ERP Analytics</h2>
+  <p style="color:var(--text-muted);margin:0.2rem 0 0;">Real-time enrollment metrics, department distribution, and admission funnel</p>
+</div>
+
+<div class="grid">
+  {% for k, v in stats.items() %}
+    <div class="card highlight">
+      <div class="num" style="color:var(--primary);">{{ v }}</div>
+      <b style="color:var(--navy);">{{ k }}</b>
+      <div style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Live database record</div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="charts">
+  <div class="card">
+    <h3 style="margin-top:0;font-size:1.05rem;color:var(--navy);">Students by Department / School</h3>
+    <canvas id="a"></canvas>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0;font-size:1.05rem;color:var(--navy);">Admission Application Status</h3>
+    <canvas id="b"></canvas>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+  const dc = {{ dc|tojson }}, ac = {{ ac|tojson }};
+  new Chart(document.getElementById('a'), {
+    type: 'bar',
+    data: {
+      labels: dc.map(x => x[0]),
+      datasets: [{
+        label: 'Enrolled Students',
+        data: dc.map(x => x[1]),
+        backgroundColor: '#9E1B32',
+        borderRadius: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+    }
+  });
+
+  new Chart(document.getElementById('b'), {
+    type: 'doughnut',
+    data: {
+      labels: ac.map(x => x[0]),
+      datasets: [{
+        data: ac.map(x => x[1]),
+        backgroundColor: ['#D4AF37', '#0E1B33', '#DC2626', '#10B981']
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+</script>
+{% endblock %}

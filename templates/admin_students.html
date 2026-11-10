@@ -1,0 +1,84 @@
+{% extends "admin_base.html" %}
+{% block main %}
+<div style="margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+  <div>
+    <h2 style="margin:0;">Student Registry</h2>
+    <p style="color:var(--text-muted);margin:0.2rem 0 0;">Manage enrolled students, academic courses and credentials</p>
+  </div>
+</div>
+
+<form method="get" style="display:flex;gap:0.6rem;max-width:560px;margin-bottom:1.5rem;">
+  <input name="s" placeholder="Search by student name..." value="{{ request.args.get('s','') }}">
+  <select name="d">
+    <option value="">All Schools / Departments</option>
+    {% for d in depts %}
+      <option value="{{ d.id }}" {{ 'selected' if request.args.get('d')==d.id|string }}>{{ d.name }}</option>
+    {% endfor %}
+  </select>
+  <button class="btn gold">Filter</button>
+</form>
+
+<div class="split">
+  <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Roll No</th>
+          <th>Student Name</th>
+          <th>Department</th>
+          <th>Course</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in students %}
+          <tr>
+            <td><b>{{ s.roll_no }}</b></td>
+            <td>{{ s.name }}</td>
+            <td>{{ s.dept }}</td>
+            <td>{{ s.course }}</td>
+            <td>
+              <form method="post" action="{{ url_for('del_student', sid=s.id) }}" onsubmit="return confirm('Permanently delete student {{ s.name }}?')">
+                {{ csrf() }}
+                <button class="btn red sm">Delete</button>
+              </form>
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="5" style="text-align:center;color:var(--text-muted);">No students found matching criteria.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <form class="stack card highlight" method="post" action="{{ url_for('add_student') }}">
+    {{ csrf() }}
+    <h3 style="margin-top:0;color:var(--primary);">Register New Student</h3>
+    <div>
+      <label style="font-size:0.85rem;font-weight:600;">Full Name</label>
+      <input name="name" placeholder="Student name" required>
+    </div>
+    <div>
+      <label style="font-size:0.85rem;font-weight:600;">Roll Number</label>
+      <input name="roll_no" placeholder="e.g. GEU2024005" required>
+    </div>
+    <div>
+      <label style="font-size:0.85rem;font-weight:600;">Official Email</label>
+      <input type="email" name="email" placeholder="student@geu.ac.in" required>
+    </div>
+    <div>
+      <label style="font-size:0.85rem;font-weight:600;">Program / Course</label>
+      <select name="course_id" required>
+        <option value="">Select Degree Course</option>
+        {% for c in courses %}
+          <option value="{{ c.id }}">{{ c.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button class="btn gold" style="margin-top:0.4rem;">Enroll Student</button>
+    <small style="color:var(--text-muted);">Initial password will be <code>Student@123</code></small>
+  </form>
+</div>
+{% endblock %}

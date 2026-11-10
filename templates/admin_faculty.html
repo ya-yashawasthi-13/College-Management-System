@@ -1,0 +1,76 @@
+{% extends "admin_base.html" %}
+{% block main %}
+<div style="margin-bottom:1.5rem;">
+  <h2 style="margin:0;">Faculty Roster</h2>
+  <p style="color:var(--text-muted);margin:0.2rem 0 0;">Manage academic staff, professors, and department assignments</p>
+</div>
+
+<div class="split">
+  <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Designation</th>
+          <th>Department</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for f in faculty %}
+          <tr>
+            <td>
+              <b>{{ f.name }}</b><br>
+              <small style="color:var(--text-muted);">{{ f.qualification }}</small>
+            </td>
+            <td>{{ f.designation }}</td>
+            <td>{{ f.dept }}</td>
+            <td>
+              <form method="post" action="{{ url_for('del_faculty', fid=f.id) }}" onsubmit="return confirm('Remove faculty {{ f.name }}?')">
+                {{ csrf() }}
+                <button class="btn red sm">Delete</button>
+              </form>
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="4" style="text-align:center;color:var(--text-muted);">No faculty registered.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <form class="stack card highlight" method="post" action="{{ url_for('add_faculty') }}">
+    {{ csrf() }}
+    <h3 style="margin-top:0;color:var(--primary);">Add Faculty Member</h3>
+    <div>
+      <label style="font-size:0.85rem;font-weight:600;">Full Name</label>
+      <input name="name" placeholder="e.g. Dr. Rajesh Kumar" required>
+    </div>
+    <div>
+      <label style="font-size:0.85rem;font-weight:600;">Official Email</label>
+      <input type="email" name="email" placeholder="rajesh.kumar@geu.ac.in" required>
+    </div>
+    <div>
+      <label style="font-size:0.85rem;font-weight:600;">Designation</label>
+      <input name="designation" placeholder="e.g. Associate Professor" required>
+    </div>
+    <div>
+      <label style="font-size:0.85rem;font-weight:600;">Highest Qualification</label>
+      <input name="qualification" placeholder="e.g. Ph.D. in Computer Science" required>
+    </div>
+    <div>
+      <label style="font-size:0.85rem;font-weight:600;">Academic Department</label>
+      <select name="department_id" required>
+        <option value="">Select Department</option>
+        {% for d in depts %}
+          <option value="{{ d.id }}">{{ d.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button class="btn gold" style="margin-top:0.4rem;">Add Faculty</button>
+    <small style="color:var(--text-muted);">Initial password will be <code>Faculty@123</code></small>
+  </form>
+</div>
+{% endblock %}

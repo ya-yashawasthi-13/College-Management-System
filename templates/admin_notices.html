@@ -1,0 +1,57 @@
+{% extends "admin_base.html" %}
+{% block main %}
+<div style="margin-bottom:1.5rem;">
+  <h2 style="margin:0;">Notice Board Administration</h2>
+  <p style="color:var(--text-muted);margin:0.2rem 0 0;">Publish official notifications, exam schedules, and circulars</p>
+</div>
+
+<div class="split">
+  <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Notice & Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for n in notices %}
+          <tr>
+            <td>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem;">
+                <b>{{ n.title }}</b>
+                <span class="badge gold">{{ n.created_at }}</span>
+              </div>
+              <p style="margin:0.4rem 0 0;font-size:0.9rem;color:var(--text-muted);line-height:1.5;">{{ n.body }}</p>
+            </td>
+            <td style="vertical-align:top;">
+              <form method="post" action="{{ url_for('del_notice', nid=n.id) }}" onsubmit="return confirm('Delete notice {{ n.title }}?')">
+                {{ csrf() }}
+                <button class="btn sm red">Delete</button>
+              </form>
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="2" style="text-align:center;color:var(--text-muted);">No circulars found.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <form class="stack card highlight" method="post" action="{{ url_for('add_notice') }}">
+    {{ csrf() }}
+    <h3 style="margin-top:0;color:var(--primary);">Publish Official Circular</h3>
+    <div>
+      <label style="font-size:0.85rem;font-weight:600;">Notice Title</label>
+      <input name="title" placeholder="e.g. Schedule for Mid-Term Examinations 2026" required>
+    </div>
+    <div>
+      <label style="font-size:0.85rem;font-weight:600;">Notice Body</label>
+      <textarea name="body" placeholder="Detailed notification content" required></textarea>
+    </div>
+    <button class="btn gold" style="margin-top:0.4rem;">Publish Circular</button>
+  </form>
+</div>
+{% endblock %}

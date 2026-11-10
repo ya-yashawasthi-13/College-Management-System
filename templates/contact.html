@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Contact Us | Graphic Era (Deemed to be University){% endblock %}
+{% block body %}
+
+<div class="phead">
+  <h1>Contact Graphic Era University</h1>
+  <p>We are here to assist with admissions, campus visits, academic queries and collaborations</p>
+</div>
+
+<div class="wrap">
+  <div class="split" style="margin:2.5rem 0;">
+    <div>
+      <h2 style="margin-top:0;">Get in Touch</h2>
+      <p style="color:var(--text-muted);margin-bottom:1.8rem;">Have a question about admissions, programs, eligibility, or life at GEU? Send us a message and our team will get back to you promptly.</p>
+
+      <form class="stack" method="post" action="{{ url_for('contact') }}">
+        {{ csrf() }}
+        <div>
+          <label style="font-size:0.88rem;font-weight:600;display:block;margin-bottom:4px;">Full Name</label>
+          <input name="name" placeholder="Enter your full name" required>
+        </div>
+        <div>
+          <label style="font-size:0.88rem;font-weight:600;display:block;margin-bottom:4px;">Email Address</label>
+          <input type="email" name="email" placeholder="example@domain.com" required>
+        </div>
+        <div>
+          <label style="font-size:0.88rem;font-weight:600;display:block;margin-bottom:4px;">Your Message or Query</label>
+          <textarea name="message" placeholder="Ask about admissions, courses, hostel, fees, etc." required></textarea>
+        </div>
+        <button class="btn" style="margin-top:0.4rem;">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Contact Info Cards -->
+    <div style="display:grid;gap:1.2rem;">
+      <div class="card highlight">
+        <h3 style="margin-top:0;color:var(--primary);">📍 Main Campus Address</h3>
+        <p style="font-size:0.92rem;line-height:1.6;margin:0;">
+          <b>Graphic Era (Deemed to be University)</b><br>
+          566/6, Bell Road, Society Area,<br>
+          Clement Town, Dehradun,<br>
+          Uttarakhand, PIN: 248002, India
+        </p>
+      </div>
+
+      <div class="card highlight">
+        <h3 style="margin-top:0;color:var(--primary);">📞 Telephones & Helplines</h3>
+        <p style="font-size:0.92rem;line-height:1.6;margin:0;">
+          <b>Toll-Free Helpline:</b> 1800 890 6027<br>
+          <b>Admissions Desk:</b> +91 9520986895<br>
+          <b>Campus Board:</b> +91-135-2643421, 2642727<br>
+          <small style="color:var(--text-muted);">(Available 8:00 AM – 8:00 PM, All 7 Days)</small>
+        </p>
+      </div>
+
+      <div class="card highlight">
+        <h3 style="margin-top:0;color:var(--primary);">✉️ Email Directory</h3>
+        <p style="font-size:0.92rem;line-height:1.6;margin:0;">
+          <b>Admissions & Enquiries:</b> <a href="mailto:admissions@geu.ac.in" style="color:var(--primary);">admissions@geu.ac.in</a><br>
+          <b>General Support:</b> <a href="mailto:enquiry@geu.ac.in" style="color:var(--primary);">enquiry@geu.ac.in</a><br>
+          <b>Registrar Office:</b> <a href="mailto:registrar@geu.ac.in" style="color:var(--primary);">registrar@geu.ac.in</a>
+        </p>
+      </div>
+
+      <div class="card gold-border">
+        <h3 style="margin-top:0;color:var(--navy);">🌐 Official Website</h3>
+        <p style="font-size:0.92rem;margin:0;">
+          Visit the official portal at <a href="https://geu.ac.in" target="_blank" style="color:var(--primary);font-weight:700;">geu.ac.in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

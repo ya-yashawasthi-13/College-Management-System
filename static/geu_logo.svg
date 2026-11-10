@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 70" width="320" height="70">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9E1B32" />
+      <stop offset="100%" stop-color="#6B0C1E" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7D070" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#AA8010" />
+    </linearGradient>
+  </defs>
+  <!-- Shield Emblem -->
+  <g transform="translate(10, 5)">
+    <!-- Outer Shield with Gold Border -->
+    <path d="M 30,2 C 48,2 58,10 58,22 C 58,42 30,56 30,58 C 30,56 2,42 2,22 C 2,10 12,2 30,2 Z" fill="url(#shieldGrad)" stroke="url(#goldGrad)" stroke-width="2.5" />
+    <!-- Inner Shield Accent Line -->
+    <path d="M 30,6 C 44,6 53,13 53,22 C 53,38 30,50 30,52 C 30,50 7,38 7,22 C 7,13 16,6 30,6 Z" fill="none" stroke="#F7D070" stroke-width="1" opacity="0.6" />
+    <!-- Open Book / Wisdom Symbol -->
+    <path d="M 17,34 Q 24,30 30,33 Q 36,30 43,34 L 43,40 Q 36,36 30,39 Q 24,36 17,40 Z" fill="url(#goldGrad)" />
+    <!-- Flaming Torch -->
+    <path d="M 28,15 L 32,15 L 31,27 L 29,27 Z" fill="url(#goldGrad)" />
+    <path d="M 30,8 C 33,11 34,14 30,15 C 26,14 27,11 30,8 Z" fill="#FFA500" />
+    <!-- GEU Initials in Shield -->
+    <text x="30" y="27" font-family="'Poppins', 'Arial Black', sans-serif" font-size="9" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">GEU</text>
+  </g>
+  <!-- University Title -->
+  <g transform="translate(76, 12)">
+    <text x="0" y="19" font-family="'Poppins', 'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">GRAPHIC ERA</text>
+    <text x="0" y="33" font-family="'Poppins', Arial, sans-serif" font-size="9.5" font-weight="600" fill="#F7D070" letter-spacing="1.2">DEEMED TO BE UNIVERSITY</text>
+    <text x="0" y="44" font-family="'Inter', Arial, sans-serif" font-size="7.5" font-weight="500" fill="#E2E8F0" letter-spacing="0.6">DEHRADUN · NAAC A+ GRADE · NIRF RANKED</text>
+  </g>
+</svg>
+

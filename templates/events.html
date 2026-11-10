@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Campus Events & Grafest | Graphic Era (Deemed to be University){% endblock %}
+{% block body %}
+
+<div class="phead">
+  <h1>University Events & Campus Life</h1>
+  <p>From Grafest — Northern India's Premier Fest — to International Hackathons and Conclaves</p>
+</div>
+
+<div class="wrap">
+  <section style="padding: 2.5rem 0;">
+    <div style="text-align:center;max-width:750px;margin:0 auto 2.5rem;">
+      <h2 style="margin-top:0;">Upcoming Campus Happenings</h2>
+      <p style="color:var(--text-muted);font-size:1.02rem;">
+        Experience vibrant university life with round-the-year techno-cultural competitions, hackathons, sports championships, and star nights.
+      </p>
+    </div>
+
+    <div class="grid">
+      {% for e in events %}
+        <div class="card ev highlight">
+          <div class="date">
+            <span style="font-size:1.4rem;">{{ e.event_date[8:] }}</span><br>
+            <small>{{ e.event_date[:7] }}</small>
+          </div>
+          <div>
+            <b style="font-size:1.15rem;color:var(--navy);">{{ e.title }}</b>
+            <p style="margin:0.5rem 0 0.8rem;color:var(--text-muted);font-size:0.92rem;line-height:1.6;">
+              {{ e.description }}
+            </p>
+            <div style="font-size:0.88rem;color:var(--primary);font-weight:600;">
+              📍 {{ e.venue }}
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <p style="text-align:center;color:var(--text-muted);">No upcoming events scheduled right now. Check back soon!</p>
+      {% endfor %}
+    </div>
+
+    <!-- Grafest Highlight Banner -->
+    <div style="margin-top:3.5rem;background:linear-gradient(135deg, var(--navy), var(--primary-dark));color:#FFF;padding:2.5rem;border-radius:var(--radius-lg);position:relative;overflow:hidden;">
+      <span class="badge gold" style="font-size:0.85rem;margin-bottom:0.8rem;">FLAGSHIP ANNUAL FEST</span>
+      <h3 style="font-size:1.8rem;margin:0.4rem 0 0.8rem;color:#FFF;">🎉 Grafest — The Mega Techno-Cultural Extravaganza</h3>
+      <p style="max-width:750px;line-height:1.7;color:#E2E8F0;font-size:0.95rem;margin:0 0 1.5rem;">
+        Grafest is Graphic Era's signature annual festival, uniting thousands of students from across the country for multi-day competitive events, robotics wars, EDM nights, dramatic arts, fashion panorama, and high-energy live celebrity musical concerts.
+      </p>
+      <a class="btn gold" href="{{ url_for('contact_page') }}">Inquire for Participation & Passes</a>
+    </div>
+  </section>
+</div>
+
+{% endblock %}
